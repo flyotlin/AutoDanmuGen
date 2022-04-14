@@ -1,13 +1,15 @@
 import os
-from AutoDanmuGen.core.common_vars import CommonVars
+
+from AutoDanmuGen.config import Config
 
 
 class Extractor(object):
     """Extract frames and comments from raw `.mp4` and `.ass` files."""
 
-    frames_outdir = os.path.join(CommonVars.tmp_dir, 'frames')
-    comments_outfile = os.path.join(CommonVars.tmp_dir, 'comment.txt')
+    frames_outdir = Config.frames_outdir
+    comments_outfile = Config.comments_outfile
 
+    # TODO: specify output destination
     def __init__(self, filepath, video_id=0) -> None:
         """Initialize Extractor
 
@@ -17,7 +19,7 @@ class Extractor(object):
         """
 
         self.filepath = filepath
-        self.video_id = video_id
+        # self.video_id = video_id  # TODO: remove it!
 
     def frames(self):
         """Extract frames from `.mp4` file and save them inside `tmp/frames`"""
@@ -39,5 +41,5 @@ class Extractor(object):
                         comment = line[line.rfind('}') + 1:].strip()
                         time = line[line.find(',') + 1:line.find('.')]
                         time = sum(x * int(t) for x, t in zip([3600, 60, 1], time.split(":")))
-                        out_file.write(f'{self.video_id}\t{time}\t{comment}\t{comment_id}\n')
+                        out_file.write(f'{comment_id}\t{time}\t{comment}\n')
                         comment_id += 1
