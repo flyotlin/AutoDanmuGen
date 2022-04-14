@@ -12,9 +12,9 @@ from AutoDanmuGen.core import Preparer, Extractor
 
 
 class TestExtractor(unittest.TestCase):
-    filepath = '/Users/flyotlin/Documents/Program/research_project/AutoDanmuGen/tests/static/【動畫瘋】進擊的巨人 The Final Season[23][540P]'
-    comment_path = '/Users/flyotlin/Documents/Program/research_project/AutoDanmuGen/tmp/comment.txt'
-    frames_path = '/Users/flyotlin/Documents/Program/research_project/AutoDanmuGen/tmp/frames'
+    filepath = '../AutoDanmuGen/tests/static/【動畫瘋】進擊的巨人 The Final Season[23][540P]'
+    comment_path = '../AutoDanmuGen/tmp/comment.txt'
+    frames_path = '../AutoDanmuGen/tmp/frames'
 
     @classmethod
     def setUpClass(cls) -> None:
