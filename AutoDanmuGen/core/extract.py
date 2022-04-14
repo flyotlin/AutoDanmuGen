@@ -7,7 +7,7 @@ class Extractor(object):
     """Extract frames and comments from raw `.mp4` and `.ass` files."""
 
     frames_outdir = Config.frames_outdir
-    comments_outfile = Config.comments_outfile
+    comment_txt = Config.comment_txt
 
     # TODO: specify output destination
     def __init__(self, filepath, video_id=0) -> None:
@@ -33,7 +33,7 @@ class Extractor(object):
     def comments(self):
         """Extract comments from `.ass` file and save it in `tmp/comment.txt`"""
 
-        with open(self.comments_outfile, 'w', encoding='utf8') as out_file:
+        with open(self.comment_txt, 'w', encoding='utf8') as out_file:
             with open(self.filepath + '.ass', 'r', encoding='utf8') as ass_file:
                 comment_id = 0
                 for line in ass_file.readlines():

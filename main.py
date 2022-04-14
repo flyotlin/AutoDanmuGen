@@ -1,7 +1,12 @@
-from AutoDanmuGen.core import Preparer, Extractor, Preprocessor
+from AutoDanmuGen import (
+    Preparer,
+    Extractor,
+    Preprocessor,
+    Candidate
+)
 
 if __name__ == '__main__':
-    filepath = '/Users/flyotlin/Documents/Program/research_project/test/video/【動畫瘋】進擊的巨人 The Final Season[23][540P]'
+    filepath = '../test/video/【動畫瘋】進擊的巨人 The Final Season[23][540P]'
     video_id = 0
 
     Preparer.prepare()
@@ -12,3 +17,7 @@ if __name__ == '__main__':
 
     preprocessor = Preprocessor()
     preprocessor.txt_to_json()
+    preprocessor.add_context_in_json([22, 261])
+
+    candidate = Candidate()
+    candidate.get()
