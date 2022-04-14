@@ -1,2 +1,0 @@
-class Preprocessor(object):
-    pass
