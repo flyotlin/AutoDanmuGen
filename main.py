@@ -1,5 +1,5 @@
-from AutoDanmuGen.preparer import Preparer
-from AutoDanmuGen.extractor import Extractor
+from AutoDanmuGen.core.preparer import Preparer
+from AutoDanmuGen.core.extractor import Extractor
 
 if __name__ == '__main__':
     filepath = '/Users/flyotlin/Documents/Program/research_project/test/video/【動畫瘋】進擊的巨人 The Final Season[23][540P]'

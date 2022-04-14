@@ -1,5 +1,5 @@
 import os
-from AutoDanmuGen.common_vars import CommonVars
+from AutoDanmuGen.core.common_vars import CommonVars
 
 
 class Preparer(object):
