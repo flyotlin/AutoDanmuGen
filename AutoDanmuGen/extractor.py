@@ -1,6 +1,7 @@
 import os
 from AutoDanmuGen.common_vars import CommonVars
 
+
 class Extractor(object):
     """Extract frames and comments from raw `.mp4` and `.ass` files."""
 
@@ -31,12 +32,12 @@ class Extractor(object):
         """Extract comments from `.ass` file and save it in `tmp/comment.txt`"""
 
         with open(self.comments_outfile, 'w', encoding='utf8') as out_file:
-            with open(self.filepath+'.ass', 'r', encoding='utf8') as ass_file:
+            with open(self.filepath + '.ass', 'r', encoding='utf8') as ass_file:
                 comment_id = 0
                 for line in ass_file.readlines():
                     if line.startswith('Dialogue'):
-                        comment = line[line.rfind('}')+1:].strip()
-                        time = line[line.find(',')+1:line.find('.')]
+                        comment = line[line.rfind('}') + 1:].strip()
+                        time = line[line.find(',') + 1:line.find('.')]
                         time = sum(x * int(t) for x, t in zip([3600, 60, 1], time.split(":")))
                         out_file.write(f'{self.video_id}\t{time}\t{comment}\t{comment_id}\n')
                         comment_id += 1
