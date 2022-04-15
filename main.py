@@ -2,7 +2,8 @@ from AutoDanmuGen import (
     Preparer,
     Extractor,
     Preprocessor,
-    Candidate
+    Candidate,
+    Danmu
 )
 
 if __name__ == '__main__':
@@ -17,7 +18,10 @@ if __name__ == '__main__':
 
     preprocessor = Preprocessor()
     preprocessor.txt_to_json()
-    preprocessor.add_context_in_json([22, 261])
+    preprocessor.add_context_in_json([22, 261, 1234, 1575])
 
     candidate = Candidate()
     candidate.get()
+
+    danmu = Danmu()
+    danmu.test()
