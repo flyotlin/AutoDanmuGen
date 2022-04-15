@@ -19,12 +19,14 @@ class Preprocessor(object):
         `id`: the id for comments.
         `time`: the timestamp for comments in sec(s).
         `comment`: the text content of the comments.
+        `video`: the id for video.
         """
         json_datas = []
         data = {
             'id': '',
             'time': '',
-            'comment': ''
+            'comment': '',
+            'video': ''
         }
 
         with open(Config.comment_txt, 'r', encoding='utf8') as comment_txt:
@@ -34,6 +36,7 @@ class Preprocessor(object):
                 data['id'] = int(cols[0])
                 data['time'] = int(cols[1])
                 data['comment'] = self.tokenize_comment(cols[2])
+                data['video'] = int(cols[3])
                 json_datas.append(data.copy())
 
         Util.dump_to_json(json_datas, Config.comment_json)
@@ -49,6 +52,7 @@ class Preprocessor(object):
             'id': '',
             'time': '',
             'comment': '',
+            'video': '',
             'context': ''
         }
         dicts = {}  # key is time, all comments at that time is the value inside key
@@ -62,6 +66,7 @@ class Preprocessor(object):
 
         for i in comment_ids:
             time = datas[i]['time']
+            video = datas[i]['video']
             context = ''
             for t in surrounding_comments:
                 if time + t not in dicts:
@@ -75,6 +80,7 @@ class Preprocessor(object):
             data['id'] = i
             data['time'] = time
             data['comment'] = [x['comment'] for x in datas[i - 2: i + 3]]
+            data['video'] = video
             data['context'] = context
             datas_with_context.append(data.copy())
 

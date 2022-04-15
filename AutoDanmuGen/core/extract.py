@@ -19,7 +19,7 @@ class Extractor(object):
         """
 
         self.filepath = filepath
-        # self.video_id = video_id  # TODO: remove it!
+        self.video_id = video_id  # TODO: remove it!
 
     def frames(self):
         """Extract frames from `.mp4` file and save them inside `tmp/frames`"""
@@ -41,5 +41,5 @@ class Extractor(object):
                         comment = line[line.rfind('}') + 1:].strip()
                         time = line[line.find(',') + 1:line.find('.')]
                         time = sum(x * int(t) for x, t in zip([3600, 60, 1], time.split(":")))
-                        out_file.write(f'{comment_id}\t{time}\t{comment}\n')
+                        out_file.write(f'{comment_id}\t{time}\t{comment}\t{self.video_id}\n')
                         comment_id += 1
