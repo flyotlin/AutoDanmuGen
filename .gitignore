@@ -1,4 +1,8 @@
 *.pyc
 *.mp4
 *.ass
+*.egg-info
+*.DS_Store
 tmp
+build
+dist
